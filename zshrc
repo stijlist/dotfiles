@@ -21,9 +21,9 @@ setopt prompt_subst
 #PROMPT="[%n@%m %c]%# "
 
 # new prompt, only directory
-PROMPT="[%c]%# "
+PROMPT="%{$fg[blue]%}[%c]%# "
 #PROMPT="%{\e[0;31m%}%m%{\e[0m%}"
-RPROMPT='%{$fg[white]%} $(prompt_char)$(~/scripts/git-cwd-info.sh)%{$reset_color%}'
+RPROMPT='%{$fg[blue]%} $(prompt_char)$(~/scripts/git-cwd-info.sh)%{$reset_color%}'
 #$(/usr/local/rvm/bin/rvm-prompt) if rvm prompt is desired
 
 PATH=$PATH:/home/bert/.gem/ruby/1.9.1/bin
@@ -71,4 +71,5 @@ alias pac='sudo pacman -S'
 alias sshutdown='sudo shutdown -h -P now'
 alias redshift='redshift -l 30.2:97.7 -t 5500:3600 &'
 alias susp='sudo pm-suspend'
+alias find='find -L'
 PATH="/usr/local/heroku/bin:$PATH"
