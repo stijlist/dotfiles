@@ -26,13 +26,6 @@ PROMPT="%{$fg[blue]%}[%c]%# "
 RPROMPT='%{$fg[blue]%} $(prompt_char)$(~/scripts/git-cwd-info.sh)%{$reset_color%}'
 #$(/usr/local/rvm/bin/rvm-prompt) if rvm prompt is desired
 
-PATH=$PATH:/home/bert/.gem/ruby/1.9.1/bin
-PATH=$PATH:/home/bert/.cabal/bin
-PATH=$PATH:/usr/local/share/python
-PATH=$PATH:/usr/bin/vendor_perl
-PATH=$PATH:/home/bert/scripts
-PATH=/usr/local/bin:$PATH
-PATH=$PATH:./.bundle/binstubs
 
 function prompt_char {
     git branch >/dev/null 2>/dev/null && echo '±' && return
@@ -72,4 +65,3 @@ alias sshutdown='sudo shutdown -h -P now'
 alias redshift='redshift -l 30.2:97.7 -t 5500:3600 &'
 alias susp='sudo pm-suspend'
 alias find='find -L'
-PATH="/usr/local/heroku/bin:$PATH"
