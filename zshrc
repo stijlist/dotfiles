@@ -65,3 +65,32 @@ alias sshutdown='sudo shutdown -h -P now'
 alias redshift='redshift -l 30.2:97.7 -t 5500:3600 &'
 alias susp='sudo pm-suspend'
 alias find='find -L'
+
+# These lines ensure completions are as verbose as possible
+zstyle ':completion:*' verbose yes
+zstyle 'completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*' group-name ”
+
+# TODO: port this to ZSH completion
+# Jason Ryan's notes utility
+# n() {
+# local arg files=(); for arg; do files+=( ~/".notes/$arg" ); done
+# ${EDITOR:-vi} "${files[@]}"
+# }
+
+# nls() {
+# tree -CR --noreport $HOME/.notes | awk '{ 
+    # if (NF==1) print $1; 
+    # else if (NF==2) print $2; 
+    # else if (NF==3) printf "  %s\n", $3 
+    # }'
+# }
+# 
+ # TAB completion for notes
+# _notes() {
+# local files=($HOME/.notes/**/"$2"*)
+    # [[ -e ${files[0]} ]] && COMPREPLY=( "${files[@]##~/.notes/}" )
+# }
+# complete -o default -F _notes n
