@@ -240,8 +240,8 @@ myKeys =
 	, ((myMod, xK_s), scratchpadSpawnAction myConfig { terminal = "xterm" })
 	, ((myMod, xK_Tab), bindOn [("chat", rotSlavesDown), ("", rotAllDown)])
 	, ((myMod .|. shiftMask, xK_Tab), bindOn [("chat", rotSlavesUp), ("", rotAllUp)])
-	, ((myMod, xK_space), sendMessage $ NextLayout)
-	, ((myMod, xK_m), sendMessage $ ToggleLayout)
+	, ((myMod, xK_d), sendMessage $ NextLayout)
+	, ((myMod, xK_space), sendMessage $ ToggleLayout)
 	]
 
 myManageHook = composeAll
