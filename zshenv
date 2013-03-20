@@ -8,5 +8,5 @@ PATH=$PATH:/usr/local/share/python
 PATH=$PATH:/usr/bin/vendor_perl
 PATH=$PATH:/home/bert/scripts
 PATH=/usr/local/bin:$PATH
-PATH=$PATH:./.bundle/binstubs
+PATH=./.bundle/binstubs:$PATH
 PATH="/usr/local/heroku/bin:$PATH"

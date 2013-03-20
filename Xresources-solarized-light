@@ -52,6 +52,7 @@
 *pointerColorBackground:S_base1
 *pointerColorForeground:S_base01
 urxvt.font             :xft:inconsolata-dz-powerline:size=14
+!! urxvt.font             :xft:xft:terminus:size=10
 urxvt.scrollBar        :false
 xterm.font             :xft:inconsolata-dz-powerline:size=14
 xterm.scrollBar        :false
