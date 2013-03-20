@@ -54,6 +54,7 @@
 urxvt.font             :xft:inconsolata:size=14
 ! urxvt.font             :xft:Terminus:size=16
 urxvt.scrollBar        :false
+! dzen2.font             :-*-terminus-*-r-normal-*-*-120-*-*-*-*-iso8859-*
 
 *color0:                  S_base02
 *color1:                  S_red

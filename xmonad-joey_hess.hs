@@ -38,20 +38,24 @@ import Control.Monad
 import Data.Ratio ((%))
 import Data.Maybe
 import Data.List
+-- dzen2 integration
+import XMonad.Hooks.DynamicLog
 
 myMod = mod1Mask -- windows key
 myTerminal = "urxvtc"
+myNormalBorderColor  = "#dddddd"
+myFocusedBorderColor = "#ff0000"
 
-myWorkSpaces = ["logs", "main", "web", "chat", "misc", "book", "7", "8", "9"]
+myWorkSpaces = ["main", "web", "book", "chat", "misc", "logs", "7", "8", "9"]
 
 myTheme = defaultTheme
 	{ activeColor         = blue
 	, inactiveColor       = grey
-	, activeBorderColor   = blue
-	, inactiveBorderColor = grey
+	, activeBorderColor   = myFocusedBorderColor
+	, inactiveBorderColor = myNormalBorderColor
 	, activeTextColor     = "white"
 	, inactiveTextColor   = "black"
-	, decoHeight          = 12
+	, decoHeight          = 0
 	}
 	where
 		blue = "#4a708b" -- same color used by pager
@@ -73,7 +77,7 @@ myLayout = smartBorders $ toggleLayouts Full perWS
 			onWorkspace "web"  (noTitles   $ noBorders $ (mySplit ||| myWide)) $
 			onWorkspace "chat" (noTitles   $ myChat gridFirst) $
 			onWorkspace "book" (noTitles   $ myBook) $
-			                   (withTitles $ codeFirst)
+			                   (noTitles $ codeFirst)
 
 		-- Modifies a layout to be desktop friendly with title bars
 		-- and avoid the panel.
@@ -236,8 +240,8 @@ myKeys =
 	, ((myMod, xK_s), scratchpadSpawnAction myConfig { terminal = "xterm" })
 	, ((myMod, xK_Tab), bindOn [("chat", rotSlavesDown), ("", rotAllDown)])
 	, ((myMod .|. shiftMask, xK_Tab), bindOn [("chat", rotSlavesUp), ("", rotAllUp)])
-	, ((myMod, xK_d), sendMessage $ NextLayout)
-	, ((myMod, xK_space), sendMessage $ ToggleLayout)
+	, ((myMod, xK_space), sendMessage $ NextLayout)
+	, ((myMod, xK_m), sendMessage $ ToggleLayout)
 	]
 
 myManageHook = composeAll
@@ -256,9 +260,8 @@ myManageHook = composeAll
 		role = stringProperty "WM_WINDOW_ROLE"
 		nofloat = ask >>= doF . W.sink
 
--- Filter out the workspace used by the ScratchPad.
--- Commented out because it exposes a bug in xmonad-contrib: 
---myLogHook = ewmhDesktopsLogHookCustom $ filter $ \w -> W.tag w /= "SP"
+-- TODO: de-uglify this log hook; make it look like dwm's
+myLogHook = dynamicLog
 
 -- Modified to only operate on floating windows, since I seem to do this by
 -- accident to non-floating.
@@ -278,7 +281,8 @@ myConfig = xfceConfig
 	{ manageHook = myManageHook
 	, layoutHook = myLayout
 	, modMask = myMod
---	, logHook = myLogHook
+--  TODO: de-uglify this log hook
+    , logHook = myLogHook
 	, workspaces = myWorkSpaces
 	, mouseBindings = myMouseBindings
 	, terminal = myTerminal
@@ -287,7 +291,8 @@ myConfig = xfceConfig
 	, focusedBorderColor = activeBorderColor myTheme
 	} `additionalKeys` myKeys
 
-main = xmonad myConfig
+-- main = xmonad myConfig
+main = xmonad =<< dzen myConfig
 
 -- Avoid the master window, but otherwise manage new windows normally.
 avoidMaster :: W.StackSet i l a s sd -> W.StackSet i l a s sd
