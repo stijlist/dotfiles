@@ -51,7 +51,7 @@
 *cursorColor:             S_base1
 *pointerColorBackground:  S_base01
 *pointerColorForeground:  S_base1
-urxvt.font             :xft:inconsolata:size=16
+urxvt.font             :xft:inconsolata:size=14
 ! urxvt.font             :xft:Terminus:size=16
 urxvt.scrollBar        :false
 
