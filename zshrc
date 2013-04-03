@@ -34,25 +34,13 @@ function prompt_char {
 }
 
 if [ "$TERM" = "linux" ] ; then
-    echo -en "\e]P8002b36" #brblack
-    echo -en "\e]P0073642" #black
-    echo -en "\e]PA586e75" #brgreen
-    echo -en "\e]PB657b83" #bryellow
-    echo -en "\e]PC839496" #brblue
-    echo -en "\e]PE93a1a1" #brcyan
-    echo -en "\e]P7eee8d5" #white
-    echo -en "\e]PFfdf6e3" #brwhite
-    echo -en "\e]P3b58900" #yellow
-    echo -en "\e]P9cb4b16" #brred
-    echo -en "\e]P1dc322f" #red
-    echo -en "\e]P5d33682" #magenta
-    echo -en "\e]PD6c71c4" #brmagenta
-    echo -en "\e]P4268bd2" #blue
-    echo -en "\e]P62aa198" #cyan
-    echo -en "\e]P2859900" #green
-    clear #for background artifacting
+    ~/scripts/solarize dark
 fi
-
+# prevents bug where .zshenv isn't sourced in tmux sessions 
+# should this go in .tmux.conf?
+if [ "$TERM" = "screen-256color" ] ; then
+    source ~/.zshenv
+fi
 
 # Transparency with xcompmgr
 #[ -n "$WINDOWID" ] && transset-df -i $WINDOWID >/dev/null
@@ -65,6 +53,8 @@ alias sshutdown='sudo shutdown -h -P now'
 alias redshift='redshift -l 30.2:97.7 -t 5500:3600 &'
 alias susp='sudo pm-suspend'
 alias find='find -L'
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
 
 # These lines ensure completions are as verbose as possible
 zstyle ':completion:*' verbose yes
