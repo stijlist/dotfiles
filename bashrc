@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 PATH="${PATH}:/home/bertie/.gem/ruby/1.9.1/bin"
-
+~/scripts/solarize dark
 
 # alias rm='rm -i'
 # alias emacs='emacs -nw'
@@ -18,7 +18,7 @@ PS1='[\u@\h \W]\$ '
 
 # Jason Ryan's notes utility
 shopt -s globstar
-n() {
+nv() {
 local arg files=(); for arg; do files+=( ~/".notes/$arg" ); done
 ${EDITOR:-vi} "${files[@]}"
 }
@@ -36,5 +36,5 @@ _notes() {
 local files=($HOME/.notes/**/"$2"*)
     [[ -e ${files[0]} ]] && COMPREPLY=( "${files[@]##~/.notes/}" )
 }
-complete -o default -F _notes n
+complete -o default -F _notes nv
 
