@@ -55,6 +55,9 @@ alias susp='sudo pm-suspend'
 alias find='find -L'
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+# TODO: debug this
+# alias read='cd ~/docs && ls | grep \\^! | xargs mupdf && cd - &'
+view(){ mupdf ~/docs/*"$1"*; }
 
 # These lines ensure completions are as verbose as possible
 zstyle ':completion:*' verbose yes

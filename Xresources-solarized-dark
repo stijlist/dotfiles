@@ -44,6 +44,11 @@
 !
 ! URxvt*background:            S_base03
 
+ Xft.dpi:                  72
+ Xft.antialias:            true
+ Xft.rgba:                 true
+ Xft.hinting:              true
+ Xft.hintstyle:            hintslight
 *background:              S_base03
 *foreground:              S_base0
 *fading:                  40
@@ -51,10 +56,13 @@
 *cursorColor:             S_base1
 *pointerColorBackground:  S_base01
 *pointerColorForeground:  S_base1
-urxvt.font             :xft:inconsolata:size=14
-! urxvt.font             :xft:Terminus:size=16
-urxvt.scrollBar        :false
+urxvt.letterSpace:        -1
+urxvt.font             :  xft:inconsolata:size=16
+! urxvt.font             :  xft:cousine:size=16
+! urxvt.font             :Terminus:size=14
+urxvt.scrollBar        :  false
 ! dzen2.font             :-*-terminus-*-r-normal-*-*-120-*-*-*-*-iso8859-*
+! urxvt.font             :-*-terminus-*-r-normal-*-*-120-*-*-*-*-iso8859-*
 
 *color0:                  S_base02
 *color1:                  S_red
