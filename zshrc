@@ -55,9 +55,11 @@ alias susp='sudo pm-suspend'
 alias find='find -L'
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
-# TODO: debug this
-# alias read='cd ~/docs && ls | grep \\^! | xargs mupdf && cd - &'
-view(){ mupdf ~/docs/*"$1"*; }
+alias pull='git pull origin master'
+alias push='git push origin master'
+
+# TODO: use the -z operator to do nothing if $1 is empty
+view(){ mupdf ~/docs/*"$1"* &; }
 
 # These lines ensure completions are as verbose as possible
 zstyle ':completion:*' verbose yes
