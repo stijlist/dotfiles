@@ -25,6 +25,8 @@ RPROMPT='%{$fg[blue]%} $(prompt_char)$(~/scripts/git-cwd-info.sh)%{$reset_color%
 # autocomplete bash completion scripts
 autoload -U bashcompinit
 bashcompinit
+# autocomplete teamocil commands
+compctl -g '~/.teamocil/*(:t:r)' teamocil
 
 # tmux doesn't source .zshenv; workaround
 if [ "$TERM" = "screen-256color" ] ; then
