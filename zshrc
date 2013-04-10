@@ -52,6 +52,8 @@ alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias pull='git pull origin master'
 alias push='git push origin master'
+alias add='git add'
+alias commit='git commit'
 alias resudo='sudo !!'
 
 # TODO: use the -z operator to do nothing if $1 is empty
