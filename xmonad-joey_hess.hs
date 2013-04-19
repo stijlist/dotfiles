@@ -232,6 +232,8 @@ myKeys =
 
     -- Restart xmonad
     , ((myMod              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+    -- Bind skippy-xd, an expose-like app switcher/overview, to mod-x
+    , ((myMod              , xK_x     ), spawn "skippy-xd")
 
 	-- the rest of Joey Hess's config starts here
 	, ((myMod, xK_a), myToggle)
