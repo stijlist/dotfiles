@@ -2,7 +2,7 @@
 	name = Bert Muthalaly
 	email = bgmuthalaly@gmail.com
 [credential]
-	helper = cache --timeout=3600
+	helper = cache --timeout=86400
 [alias]
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
