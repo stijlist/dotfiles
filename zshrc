@@ -56,7 +56,12 @@ alias pull='git pull origin master'
 alias push='git push origin master'
 alias add='git add'
 alias commit='git commit'
-alias resudo='sudo !!'
+alias sync-repositories='sudo pacman -Syy'
+alias update-system='sudo pacman -Syu'
+alias ..='cd ..'
+alias ...='cd ../..'
+# TODO: This doesn't work; I think it runs the commands in su's context
+# alias resudo='sudo !!'
 
 # TODO: use the -z operator to do nothing if $1 is empty
 view(){ mupdf ~/docs/*"$1"* &; }

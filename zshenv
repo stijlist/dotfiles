@@ -10,3 +10,5 @@ PATH=$PATH:/home/bert/scripts
 PATH=/usr/local/bin:$PATH
 PATH=./.bundle/binstubs:$PATH
 PATH="/usr/local/heroku/bin:$PATH"
+# installation of brett terpstra's na script
+[[ -s "/home/bert/scripts/na/na.sh" ]] && source "/home/bert/scripts/na/na.sh"
