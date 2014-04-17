@@ -1,2 +1,0 @@
-POST_UP="sleep 5; su bert -c 'dropbox start';"
-PRE_DOWN="sleep 1; su bert -c 'dropbox stop';"
