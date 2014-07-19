@@ -1,18 +1,9 @@
 set -g -x PATH ~/scripts $PATH
-set -g -x PATH /usr/local/bin $PATH
-set -g -x PATH /usr/local/opt/ruby/bin $PATH 
-set -g -x PATH /Applications/Postgres.app/Contents/MacOS/bin $PATH 
 set -g -x EDITOR vim
-set -g -x GOPATH ~/source/go
-set -g -x PATH $GOPATH/bin $PATH
-set -g -x PLAN9 /Users/bert/plan9
-set -g -x PATH $PATH $PLAN9/bin
-set -g -x STACKFILE ~/notes/stack.taskpaper
-set -g -x NEXTFILE ~/notes/next.taskpaper
+set -g -x PATH /usr/local/bin $PATH
 alias clear-todos "organize-list ~/notes/next.taskpaper"
 alias conflicts "git ls-files -u | awk '{print $4}' | sort -u"
 alias merge "vim (git status -s | grep '^UU' | awk '{print $2}')"
-. /usr/local/share/chruby/chruby.fish
 
 set fish_git_dirty_color red
 set fish_git_not_dirty_color green
