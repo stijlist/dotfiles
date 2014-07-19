@@ -13,6 +13,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'sjl/gundo.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
+" ancillary
+Plugin 'wting/rust.vim'
 call vundle#end()
 
 filetype plugin indent on
