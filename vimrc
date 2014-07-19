@@ -42,14 +42,14 @@ highlight ColorColumn ctermbg=10
 set listchars=tab:▸\ ,eol:¬
 
 " solarized config
-" set background=dark
-" colorscheme solarized 
-" call togglebg#map("<F5>")
-" if has("mac")
-	" let g:solarized_termtrans=1
-" endif
-" set t_Co=256
-" highlight clear SignColumn
+set background=dark
+colorscheme solarized 
+call togglebg#map("<F5>")
+if has("mac")
+    let g:solarized_termtrans=1
+endif
+set t_Co=256
+highlight clear SignColumn
 
 set textwidth=79
 set colorcolumn=80
