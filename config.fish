@@ -4,6 +4,7 @@ set -g -x PATH /usr/local/bin $PATH
 alias clear-todos "organize-list ~/notes/next.taskpaper"
 alias conflicts "git ls-files -u | awk '{print $4}' | sort -u"
 alias merge "vim (git status -s | grep '^UU' | awk '{print $2}')"
+alias g git
 
 set fish_git_dirty_color red
 set fish_git_not_dirty_color green
