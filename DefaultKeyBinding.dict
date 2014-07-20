@@ -1,0 +1,4 @@
+{
+    /* rebind ctrl-w to backward-kill-word */
+    "^w" = "deleteWordBackward:";
+}
