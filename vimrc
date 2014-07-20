@@ -21,6 +21,11 @@ filetype plugin indent on
 syntax enable
 set nobackup
 set noswapfile
+" persistent undo!
+set undolevels=1000
+set undoreload=10000
+set undodir=~/.vim/undodir
+set undofile
 set hidden
 set splitbelow
 set splitright
