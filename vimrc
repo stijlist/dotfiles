@@ -44,6 +44,7 @@ set autoindent
 " copy previous indent on enter 
 set copyindent
 set smartindent
+set formatprg=par\ -w79
 set pastetoggle=<F2>
 
 set guioptions-=m
