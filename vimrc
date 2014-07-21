@@ -26,6 +26,8 @@ set undolevels=1000
 set undoreload=10000
 set undodir=~/.vim/undodir
 set undofile
+" If a file is changed outside of vim, automatically reload it without asking
+set autoread
 set hidden
 set splitbelow
 set splitright
@@ -79,18 +81,3 @@ set incsearch
 set showmatch
 set ignorecase
 set smartcase
-
-" conveniences for prose editing
-func! WordProcessorMode() 
-  setlocal formatoptions=1 
-  setlocal noexpandtab 
-  map j gj 
-  map k gk
-  setlocal spell spelllang=en_us 
-  " set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
-  set complete+=s
-  set formatprg=par
-  setlocal wrap 
-  setlocal linebreak 
-endfu 
-com! WP call WordProcessorMode()
