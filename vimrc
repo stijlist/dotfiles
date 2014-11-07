@@ -8,13 +8,17 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-commentary'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'sjl/gundo.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
-" ancillary
-Plugin 'wting/rust.vim'
+" ruby
+Plugin 'tpope/vim-endwise'
+Plugin 'vim-ruby/vim-ruby'
+" extra
+Plugin 'chriskempson/base16-vim'
 call vundle#end()
 
 filetype plugin indent on
@@ -35,9 +39,10 @@ set showcmd
 set wrap
 set number
 set encoding=utf-8
+set wildmenu
 " ensures that vim-airline shows up in non-split windows
 set laststatus=2 
-set tabstop=4 shiftwidth=4
+set tabstop=2 shiftwidth=2
 set expandtab
 set backspace=indent,eol,start " figure out how to backspace through tabs
 set autoindent
@@ -58,6 +63,7 @@ call togglebg#map("<F5>")
 if has("mac")
     let g:solarized_termtrans=1
 endif
+
 set t_Co=256
 highlight clear SignColumn
 
@@ -69,7 +75,18 @@ set formatoptions=qrn1
 let mapleader = ","
 nnoremap <leader>t :CtrlP<cr> " use the command-t mapping for ctrl-p
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
-nnoremap <leader>a :Ack 
+nnoremap <leader>a :!ag  
+nnoremap <leader>d :!./debug.sh<cr>
+nnoremap <leader>r :!./test.sh<cr>
+function WriteAndRunTests()
+  :w
+  :!./test.sh
+endfunction
+nnoremap <leader>wr :call WriteAndRunTests()<cr>
+nnoremap <leader>s :sp<cr>
+nnoremap <leader>v :vs<cr>
+nnoremap <leader>w :w<cr>
+nnoremap <leader>q :q<cr>
 
 " improvements to search
 nnoremap / /\v
@@ -82,3 +99,5 @@ set incsearch
 set showmatch
 set ignorecase
 set smartcase
+
+autocmd FileType ruby set ts=2 sw=2

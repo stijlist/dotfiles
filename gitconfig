@@ -1,6 +1,6 @@
 [user]
 	name = Bert Muthalaly
-	email = bgmuthalaly@gmail.com
+	email = bert@somethingdoneright.net
 [credential]
 	helper = cache --timeout=86400
 [alias]
@@ -21,3 +21,6 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [core]
 	excludesfile = ~/.cvsignore
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
