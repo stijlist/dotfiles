@@ -13,6 +13,7 @@
     dlf = diff --cached HEAD^
     la = "!git config -l | grep alias | cut -c 7-"
     ci = commit
+    ca = commit -a
     co = checkout
     cl = clone
     aa = add -A
@@ -24,3 +25,5 @@
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
+[push]
+	default = simple

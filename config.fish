@@ -7,9 +7,11 @@ alias merge "vim (git status -s | grep '^UU' | awk '{print $2}')"
 alias swiftrun "/Applications/Xcode6-beta4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift -i" 
 alias v vim
 alias g git
+complete --command g --wraps git
 . /usr/local/share/chruby/chruby.fish
 . /usr/local/share/chruby/auto.fish
 . /Users/bert/scripts/virtual.fish
+chruby ruby-2.1
 
 set fish_git_dirty_color red
 set fish_git_not_dirty_color green
@@ -27,8 +29,8 @@ end
 
 function fish_prompt
   if test -d .git
-    printf '%s@%s %s%s%s:%s> ' (whoami) (hostname|cut -d . -f 1) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (parse_git_branch)
+    printf '%s %s%s%s:%s> ' (whoami) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (parse_git_branch)
   else
-    printf '%s@%s %s%s%s> ' (whoami) (hostname|cut -d . -f 1) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
+    printf '%s %s%s%s> ' (whoami) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
   end
 end

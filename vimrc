@@ -9,14 +9,18 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'sjl/gundo.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'rking/ag.vim'
 Plugin 'altercation/vim-colors-solarized'
 " ruby
 Plugin 'tpope/vim-endwise'
 Plugin 'vim-ruby/vim-ruby'
+" scala
+Plugin 'derekwyatt/vim-scala'
 " extra
 Plugin 'chriskempson/base16-vim'
 call vundle#end()
@@ -53,11 +57,12 @@ set formatprg=par\ -w79
 set pastetoggle=<F2>
 
 set guioptions-=m
+set guifont=InputMono\ ExLight:h14
 highlight ColorColumn ctermbg=10
 set listchars=tab:▸\ ,eol:¬
 
 " solarized config
-set background=dark
+set background=light
 colorscheme solarized 
 call togglebg#map("<F5>")
 if has("mac")
@@ -75,14 +80,16 @@ set formatoptions=qrn1
 let mapleader = ","
 nnoremap <leader>t :CtrlP<cr> " use the command-t mapping for ctrl-p
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
-nnoremap <leader>a :!ag  
+nnoremap <leader>a :Ag  
 nnoremap <leader>d :!./debug.sh<cr>
-nnoremap <leader>r :!./test.sh<cr>
-function WriteAndRunTests()
-  :w
-  :!./test.sh
-endfunction
-nnoremap <leader>wr :call WriteAndRunTests()<cr>
+nnoremap <leader>r :!./bin/test.sh<cr>
+nnoremap <leader>u :GundoToggle<cr>
+nnoremap <leader>g :Git ca<cr>
+" function WriteAndRunTests()
+"   :w
+"   :!./bin/test.sh
+" endfunction
+" nnoremap <leader>wr :call WriteAndRunTests()<cr>
 nnoremap <leader>s :sp<cr>
 nnoremap <leader>v :vs<cr>
 nnoremap <leader>w :w<cr>
@@ -101,3 +108,5 @@ set ignorecase
 set smartcase
 
 autocmd FileType ruby set ts=2 sw=2
+let g:ctrlp_custom_ignore='\v(node_modules|target|out)'
+" let g:syntastic_javascript_checkers = ['standard']
