@@ -21,8 +21,9 @@ Plugin 'tpope/vim-endwise'
 Plugin 'vim-ruby/vim-ruby'
 " scala
 Plugin 'derekwyatt/vim-scala'
-" extra
-Plugin 'chriskempson/base16-vim'
+" javascript
+Plugin 'marijnh/tern_for_vim'
+" checkout matchit
 call vundle#end()
 
 filetype plugin indent on
@@ -32,7 +33,7 @@ set noswapfile
 " persistent undo!
 set undolevels=1000
 set undoreload=10000
-set undodir=~/.vim/undodir
+set undodir=~/Dropbox/undo
 set undofile
 " If a file is changed outside of vim, automatically reload it without asking
 set autoread
@@ -84,7 +85,7 @@ nnoremap <leader>a :Ag
 nnoremap <leader>d :!./debug.sh<cr>
 nnoremap <leader>r :!./bin/test.sh<cr>
 nnoremap <leader>u :GundoToggle<cr>
-nnoremap <leader>g :Git ca<cr>
+nnoremap <leader>c :Git ca<cr>
 " function WriteAndRunTests()
 "   :w
 "   :!./bin/test.sh
