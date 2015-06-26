@@ -4,11 +4,12 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set shell=bash
+set shell=/bin/bash
 set t_ti= t_te=
 set scrolloff=3
 set nobackup
 set nowritebackup
+set noswapfile
 set backspace=indent,eol,start
 set showcmd
 set wildmode=longest,list
@@ -23,6 +24,8 @@ nnoremap <leader>v :vsp<CR>
 nnoremap <leader>a :!ag 
 nnoremap <leader>c :!git ca<CR>
 nnoremap <leader>f gqip
+
+vnoremap s :s/\%V.*\%V.\?/\=system('surround "' . input("with:") . '"', submatch(0))/<cr>
 
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
