@@ -25,7 +25,7 @@ nnoremap <leader>a :!ag
 nnoremap <leader>c :!git ca<CR>
 nnoremap <leader>f gqip
 
-vnoremap s :s/\%V.*\%V.\?/\=system('surround "' . input("with:") . '"', submatch(0))/<cr>
+vnoremap s :s/\%V.*\%V.\?/\=system('surround "' . escape(input("with:"), '"') . '"', submatch(0))/<cr>
 
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
