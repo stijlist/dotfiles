@@ -1,6 +1,7 @@
-set -g -x PATH ~/scripts $PATH
+set -g -x PATH ~/bin $PATH
 set -g -x EDITOR vim
 set -g -x PATH /usr/local/bin $PATH
+set -g -x PATH /Applications/Postgres.app/Contents/Versions/9.4/bin $PATH
 alias clear-todos "organize-list ~/notes/next.taskpaper"
 alias conflicts "git ls-files -u | awk '{print $4}' | sort -u"
 alias merge "vim (git status -s | grep '^UU' | awk '{print $2}')"
