@@ -24,6 +24,7 @@ nnoremap <leader>v :vsp<CR>
 nnoremap <leader>a :!ag 
 nnoremap <leader>c :!git ca<CR>
 nnoremap <leader>f gqip
+nnoremap <leader>r :!./test.sh<CR>
 
 vnoremap s :s/\%V.*\%V.\?/\=system('surround "' . escape(input("with:"), '"') . '"', submatch(0))/<cr>
 
