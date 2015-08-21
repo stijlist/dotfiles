@@ -1,18 +1,10 @@
 set -g -x PATH ~/bin $PATH
-set -g -x EDITOR vim
+set -g -x EDITOR nvim
 set -g -x PATH /usr/local/bin $PATH
 set -g -x PATH /Applications/Postgres.app/Contents/Versions/9.4/bin $PATH
-alias clear-todos "organize-list ~/notes/next.taskpaper"
 alias conflicts "git ls-files -u | awk '{print $4}' | sort -u"
-alias merge "vim (git status -s | grep '^UU' | awk '{print $2}')"
-alias swiftrun "/Applications/Xcode6-beta4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift -i" 
-alias v vim
-alias g git
-complete --command g --wraps git
-. /usr/local/share/chruby/chruby.fish
-. /usr/local/share/chruby/auto.fish
-. /Users/bert/scripts/virtual.fish
-chruby ruby-2.1
+alias merge "$EDITOR (git status -s | grep '^UU' | awk '{print $2}')"
+alias vim nvim
 
 set fish_git_dirty_color red
 set fish_git_not_dirty_color green
