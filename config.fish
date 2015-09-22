@@ -1,10 +1,10 @@
 set -g -x PATH ~/bin $PATH
-set -g -x EDITOR nvim
 set -g -x PATH /usr/local/bin $PATH
 set -g -x PATH /Applications/Postgres.app/Contents/Versions/9.4/bin $PATH
+set -g -x EDITOR vim
 alias conflicts "git ls-files -u | awk '{print $4}' | sort -u"
 alias merge "$EDITOR (git status -s | grep '^UU' | awk '{print $2}')"
-alias vim nvim
+source /usr/local/share/chruby/chruby.fish
 
 set fish_git_dirty_color red
 set fish_git_not_dirty_color green
