@@ -14,6 +14,7 @@ set backspace=indent,eol,start
 set showcmd
 set wildmode=longest,list
 set wildmenu
+set autoindent
 :set timeout timeoutlen=1000 ttimeoutlen=100
 set autoread
 let mapleader=","
@@ -26,7 +27,7 @@ nnoremap <leader>c :!git ca<CR>
 nnoremap <leader>f gqip
 nnoremap <leader>r :!./test.sh<CR>
 
-vnoremap s :s/\%V.*\%V.\?/\=system('surround "' . escape(input("with:"), '"') . '"', submatch(0))/<cr>
+vnoremap s :s/\%V.*\%V.\?/\=system('surround "' . escape(input("with:"), '"`') . '"', submatch(0))/<cr>
 
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
