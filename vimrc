@@ -1,4 +1,5 @@
 set nocompatible
+filetype plugin indent on
 set hidden
 set expandtab
 set tabstop=2
@@ -17,6 +18,7 @@ set wildmenu
 set autoindent
 :set timeout timeoutlen=1000 ttimeoutlen=100
 set autoread
+set incsearch
 let mapleader=","
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
@@ -25,7 +27,7 @@ nnoremap <leader>v :vsp<CR>
 nnoremap <leader>a :!ag 
 nnoremap <leader>c :!git ca<CR>
 nnoremap <leader>f gqip
-nnoremap <leader>r :!./test.sh<CR>
+nnoremap <leader>r q:k<CR>
 
 vnoremap s :s/\%V.*\%V.\?/\=system('surround "' . escape(input("with:"), '"`') . '"', submatch(0))/<cr>
 
