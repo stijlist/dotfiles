@@ -16,18 +16,20 @@ set showcmd
 set wildmode=longest,list
 set wildmenu
 set autoindent
-:set timeout timeoutlen=1000 ttimeoutlen=100
+set timeout timeoutlen=1000 ttimeoutlen=100
 set autoread
 set incsearch
+set ignorecase
+set smartcase
 let mapleader=","
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>s :sp<CR>
 nnoremap <leader>v :vsp<CR>
-nnoremap <leader>a :!ag 
+nnoremap <leader>a :!rg 
 nnoremap <leader>c :!git ca<CR>
 nnoremap <leader>f gqip
-nnoremap <leader>r q:k<CR>
+nnoremap <leader>r q:?^!<CR><CR>
 
 vnoremap s :s/\%V.*\%V.\?/\=system('surround "' . escape(input("with:"), '"`') . '"', submatch(0))/<cr>
 
@@ -49,3 +51,6 @@ endfunction
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
 nnoremap <leader>t :call SelectaCommand("find * -type f", "", ":e")<cr>
+command! Jade !jade %
+command! -nargs=1 Search !rg <args>
+
