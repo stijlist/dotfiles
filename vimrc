@@ -26,7 +26,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>s :sp<CR>
 nnoremap <leader>v :vsp<CR>
-nnoremap <leader>a :!rg 
+nnoremap <leader>a :Search 
 nnoremap <leader>c :!git ca<CR>
 nnoremap <leader>f gqip
 nnoremap <leader>r q:?^!<CR><CR>
@@ -53,4 +53,5 @@ endfunction
 nnoremap <leader>t :call SelectaCommand("find * -type f", "", ":e")<cr>
 command! Jade !jade %
 command! -nargs=1 Search !rg <args>
+" TODO: we can probably get identifier-based autocompletion here
 
