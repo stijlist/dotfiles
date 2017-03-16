@@ -4,7 +4,10 @@ set -g -x PATH /Applications/Postgres.app/Contents/Versions/9.4/bin $PATH
 set -g -x EDITOR vim
 alias conflicts "git ls-files -u | awk '{print $4}' | sort -u"
 alias merge "$EDITOR (git status -s | grep '^UU' | awk '{print $2}')"
+prodcertstatus >/dev/null 2>&1 ;or prodaccess
 source /usr/local/share/chruby/chruby.fish
+source /google/data/ro/teams/fish/google.fish
+
 
 set fish_git_dirty_color red
 set fish_git_not_dirty_color green
