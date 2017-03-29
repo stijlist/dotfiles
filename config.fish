@@ -44,8 +44,8 @@ end
 
 function fish_prompt
   if test -d .git
-    printf '%s %s%s%s:%s> ' (whoami) (set_color $fish_color_cwd) (google3_pwd) (set_color normal) (parse_git_branch)
+    printf '%s%s%s:%s> ' (set_color $fish_color_cwd) (google3_pwd) (set_color normal) (parse_git_branch)
   else
-    printf '%s %s%s%s%s> ' (whoami) (set_color $fish_color_cwd) (google3_pwd) (set_color normal) (job_count)
+    printf '%s%s%s%s> ' (set_color $fish_color_cwd) (google3_pwd) (set_color normal) (job_count)
   end
 end
