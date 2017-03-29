@@ -42,6 +42,10 @@ function job_count
   end
 end
 
+# TODO
+# if there's a CL tag on head, display it
+# if there are changes that aren't tracked yet set fish dirty color
+# if there are unstable revs print (unstable)
 function fish_prompt
   if test -d .git
     printf '%s%s%s:%s> ' (set_color $fish_color_cwd) (google3_pwd) (set_color normal) (parse_git_branch)
