@@ -3,8 +3,9 @@ set -g -x PATH /usr/local/bin $PATH
 set -g -x PATH /Applications/Postgres.app/Contents/Versions/9.4/bin $PATH
 set -g -x EDITOR vim
 set -g -x NOTESDIR ~/notes
+. /google/data/ro/teams/fish/google.fish
+. /usr/share/fish/completions/hg.fish
 prodcertstatus >/dev/null 2>&1 ;or prodaccess
-source /google/data/ro/teams/fish/google.fish
 
 function fish_greeting
   echo "Here's what's at the top of your TODO list:"
