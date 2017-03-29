@@ -27,10 +27,17 @@ function parse_git_branch
   end
 end
 
+function job_count
+  set -l count (jobs | wc -l)
+  if not test $count -eq 0
+    echo " ($count)"
+  end
+end
+
 function fish_prompt
   if test -d .git
     printf '%s %s%s%s:%s> ' (whoami) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (parse_git_branch)
   else
-    printf '%s %s%s%s> ' (whoami) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
+    printf '%s %s%s%s%s> ' (whoami) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (job_count)
   end
 end
