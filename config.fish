@@ -4,7 +4,6 @@ set -g -x PATH /Applications/Postgres.app/Contents/Versions/9.4/bin $PATH
 set -g -x EDITOR vim
 set -g -x NOTESDIR ~/notes
 prodcertstatus >/dev/null 2>&1 ;or prodaccess
-source /usr/local/share/chruby/chruby.fish
 source /google/data/ro/teams/fish/google.fish
 
 function fish_greeting
