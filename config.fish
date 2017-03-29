@@ -27,6 +27,14 @@ function parse_git_branch
   end
 end
 
+function google3_pwd
+  if pwd | grep "^/google/src/cloud/.*/google3" > /dev/null
+    pwd | grep -Eo "[[:alnum:]]+/google3"
+  else
+    prompt_pwd
+  end
+end
+
 function job_count
   set -l count (jobs | wc -l)
   if not test $count -eq 0
@@ -36,8 +44,8 @@ end
 
 function fish_prompt
   if test -d .git
-    printf '%s %s%s%s:%s> ' (whoami) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (parse_git_branch)
+    printf '%s %s%s%s:%s> ' (whoami) (set_color $fish_color_cwd) (google3_pwd) (set_color normal) (parse_git_branch)
   else
-    printf '%s %s%s%s%s> ' (whoami) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (job_count)
+    printf '%s %s%s%s%s> ' (whoami) (set_color $fish_color_cwd) (google3_pwd) (set_color normal) (job_count)
   end
 end
