@@ -54,4 +54,4 @@ nnoremap <leader>t :call SelectaCommand("find * -type f", "", ":e")<cr>
 command! Jade !jade %
 command! -nargs=1 Search !rg <args>
 " TODO: we can probably get identifier-based autocompletion here
-
+" If the cursor is over a markdown link, open the target in the current split

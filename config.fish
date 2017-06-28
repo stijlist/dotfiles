@@ -1,11 +1,15 @@
 set -g -x PATH ~/bin $PATH
 set -g -x PATH /usr/local/bin $PATH
 set -g -x PATH /Applications/Postgres.app/Contents/Versions/9.4/bin $PATH
+set -g -x PATH ~/.cargo/bin $PATH
 set -g -x EDITOR vim
 set -g -x NOTESDIR ~/notes
-. /google/data/ro/teams/fish/google.fish
-. /usr/share/fish/completions/hg.fish
-prodcertstatus >/dev/null 2>&1 ;or prodaccess
+
+if test -e ~/.at_google
+  . /google/data/ro/teams/fish/google.fish
+  . /usr/share/fish/completions/hg.fish
+  prodcertstatus >/dev/null 2>&1 ;or prodaccess
+end
 
 function fish_greeting
   echo "Here's what's at the top of your TODO list:"
@@ -27,14 +31,6 @@ function parse_git_branch
   end
 end
 
-function google3_pwd
-  if pwd | grep "^/google/src/cloud/.*/google3" > /dev/null
-    pwd | grep -Eo "[[:alnum:]]+/google3"
-  else
-    prompt_pwd
-  end
-end
-
 function job_count
   set -l count (jobs | wc -l)
   if not test $count -eq 0
@@ -48,8 +44,8 @@ end
 # if there are unstable revs print (unstable)
 function fish_prompt
   if test -d .git
-    printf '%s%s%s:%s> ' (set_color $fish_color_cwd) (google3_pwd) (set_color normal) (parse_git_branch)
+    printf '%s%s%s:%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (parse_git_branch)
   else
-    printf '%s%s%s%s> ' (set_color $fish_color_cwd) (google3_pwd) (set_color normal) (job_count)
+    printf '%s%s%s%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (job_count)
   end
 end
