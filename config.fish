@@ -1,7 +1,5 @@
 set -g -x PATH ~/bin $PATH
 set -g -x PATH /usr/local/bin $PATH
-set -g -x PATH /Applications/Postgres.app/Contents/Versions/9.4/bin $PATH
-set -g -x PATH ~/.cargo/bin $PATH
 set -g -x EDITOR vim
 set -g -x NOTESDIR ~/notes
 
@@ -13,7 +11,7 @@ end
 
 function fish_greeting
   echo "Here's what's at the top of your TODO list:"
-  head -n 5 $NOTESDIR/next
+  head -n 3 $NOTESDIR/next.txt
 end
 funcsave fish_greeting
 
