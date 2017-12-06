@@ -1,13 +1,9 @@
 set -g -x PATH ~/bin $PATH
 set -g -x PATH /usr/local/bin $PATH
+set -g -x PATH ~/fuchsia/.jiri_root/bin $PATH
 set -g -x EDITOR vim
 set -g -x NOTESDIR ~/notes
 
-if test -e ~/.at_google
-  . /google/data/ro/teams/fish/google.fish
-  . /usr/share/fish/completions/hg.fish
-  prodcertstatus >/dev/null 2>&1 ;or prodaccess
-end
 
 function fish_greeting
   echo "Here's what's at the top of your TODO list:"
@@ -36,13 +32,9 @@ function job_count
   end
 end
 
-# TODO
-# if there's a CL tag on head, display it
-# if there are changes that aren't tracked yet set fish dirty color
-# if there are unstable revs print (unstable)
 function fish_prompt
   if test -d .git
-    printf '%s%s%s:%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (parse_git_branch)
+    printf '%s%s%s:%s%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (parse_git_branch) (job_count)
   else
     printf '%s%s%s%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (job_count)
   end
