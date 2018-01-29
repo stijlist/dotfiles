@@ -3,6 +3,7 @@ set -g -x PATH /usr/local/bin $PATH
 set -g -x PATH ~/fuchsia/.jiri_root/bin $PATH
 set -g -x EDITOR vim
 set -g -x NOTESDIR ~/notes
+set -g -x GOPATH ~/fuchsia/garnet/go $GOPATH
 
 
 function fish_greeting
@@ -26,7 +27,7 @@ function parse_git_branch
 end
 
 function job_count
-  set -l count (jobs | wc -l)
+  set -l count (jobs | wc -l | xargs)
   if not test $count -eq 0
     echo " ($count)"
   end
