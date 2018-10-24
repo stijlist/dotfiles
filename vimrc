@@ -26,7 +26,6 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>s :sp<CR>
 nnoremap <leader>v :vsp<CR>
-nnoremap <leader>a :Search 
 nnoremap <leader>c :!git ca<CR>
 nnoremap <leader>f gqip
 nnoremap <leader>r q:?^!<CR><CR>
@@ -51,7 +50,15 @@ endfunction
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
 nnoremap <leader>t :call SelectaCommand("find * -type f", "", ":e")<cr>
-command! Jade !jade %
-command! -nargs=1 Search !rg <args>
+
+" Find all files containing the identifier provided to input().
+" ripgrep will skip gitignored files and directories.
+nnoremap <leader>a :call SelectaCommand("rg -l '" . escape(input("ripgrep:"), '"`') . "'", "", ":e")<cr>
+
 " TODO: we can probably get identifier-based autocompletion here
 " If the cursor is over a markdown link, open the target in the current split
+"
+let g:go_fmt_command = "goimports"
+
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow

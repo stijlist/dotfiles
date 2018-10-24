@@ -1,4 +1,4 @@
 #!/bin/sh
 
-xmodmap $HOME/.Xmodmap
+export DESKTOP_SESSION=gnome
 exec dwm

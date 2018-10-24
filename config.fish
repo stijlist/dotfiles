@@ -1,9 +1,11 @@
 set -g -x PATH ~/bin $PATH
 set -g -x PATH /usr/local/bin $PATH
 set -g -x PATH ~/fuchsia/.jiri_root/bin $PATH
+set -g -x PATH ~/.cargo/bin $PATH
+set -g -x PATH ~/fuchsia/out/build-zircon/tools $PATH
 set -g -x EDITOR vim
 set -g -x NOTESDIR ~/notes
-set -g -x GOPATH ~/fuchsia/garnet/go $GOPATH
+set -g -x GOPATH $HOME/go
 
 
 function fish_greeting
@@ -27,9 +29,16 @@ function parse_git_branch
 end
 
 function job_count
-  set -l count (jobs | wc -l | xargs)
+  set -l count (jobs | wc -l)
   if not test $count -eq 0
     echo " ($count)"
+  end
+end
+
+function jiri_changed_repos
+  if test (pwd) = ~/fuchsia
+    set -l changed (jiri status | grep -Eo '^[a-zA-Z\/_]+: $' | tr -d ': ' | xargs | sed -e 's/ /,/g' 2> /dev/null)
+    echo " " (set_color $fish_git_dirty_color) "($changed)" (set_color $fish_git_not_dirty_color)
   end
 end
 

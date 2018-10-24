@@ -1,6 +1,6 @@
 [user]
 	name = Bert Muthalaly
-	email = bert@somethingdoneright.net
+	email = stijlist@google.com
 [credential]
 	helper = cache --timeout=86400
 [alias]
@@ -16,11 +16,14 @@
     ca = commit -a
     co = checkout
     cl = clone
+    c  = rev-list --format=%B --max-count=1 HEAD
     aa = add -A
     s  = status -s
     sl = status
+    ss = "!git add -A -N && git commit -m snapshot"
     ap = "!git add -p && git commit"
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  recoverable = "!git log --graph --oneline --decorate $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')"
 [core]
 	excludesfile = ~/.cvsignore
 [filter "media"]
@@ -28,3 +31,9 @@
 	smudge = git-media-smudge %f
 [push]
 	default = simple
+[http]
+	cookiefile = /usr/local/google/home/stijlist/.gitcookies
+[diff]
+	algorithm = patience
+[stash]
+  stash = stash -k -u
