@@ -29,11 +29,14 @@
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
+[commit]
+  verbose = true
 [push]
 	default = simple
 [http]
 	cookiefile = /usr/local/google/home/stijlist/.gitcookies
 [diff]
 	algorithm = patience
+	indentHeuristic = true
 [stash]
   stash = stash -k -u
