@@ -35,13 +35,6 @@ function job_count
   end
 end
 
-function jiri_changed_repos
-  if test (pwd) = ~/fuchsia
-    set -l changed (jiri status | grep -Eo '^[a-zA-Z\/_]+: $' | tr -d ': ' | xargs | sed -e 's/ /,/g' 2> /dev/null)
-    echo " " (set_color $fish_git_dirty_color) "($changed)" (set_color $fish_git_not_dirty_color)
-  end
-end
-
 function fx_build_dir
   if test -e ./.fx-build-dir
     cat ./.fx-build-dir | tr -d '\n'
