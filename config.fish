@@ -42,9 +42,15 @@ function jiri_changed_repos
   end
 end
 
+function fx_build_dir
+  if test -e ./.fx-build-dir
+    cat ./.fx-build-dir | tr -d '\n'
+  end
+end
+
 function fish_prompt
   if test -d .git
-    printf '%s%s%s:%s%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (parse_git_branch) (job_count)
+    printf '%s%s%s:%s:%s%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (fx_build_dir) (parse_git_branch) (job_count)
   else
     printf '%s%s%s%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (job_count)
   end
