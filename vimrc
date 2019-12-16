@@ -62,3 +62,13 @@ let g:go_fmt_command = "goimports"
 
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
+
+
+set runtimepath+=~/.vim/LanguageClient-neovim
+" Experimental language server protocol support.
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['ra_lsp_server'],
+    \ }
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
