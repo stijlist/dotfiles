@@ -53,11 +53,6 @@ nnoremap <leader>t :call SelectaCommand("find * -type f", "", ":e")<cr>
 " ripgrep will skip gitignored files and directories.
 nnoremap <leader>a :call SelectaCommand("rg -l '" . escape(input("ripgrep:"), '"`') . "'", "", ":e")<cr>
 
-" TODO: we can probably get identifier-based autocompletion here
-" If the cursor is over a markdown link, open the target in the current split
-"
-let g:go_fmt_command = "goimports"
-
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
