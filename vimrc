@@ -24,7 +24,6 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>s :sp<CR>
 nnoremap <leader>v :vsp<CR>
-nnoremap <leader>c :!git ca<CR>
 nnoremap <leader>f gqip
 nnoremap <leader>r q:?^!<CR><CR>
 
