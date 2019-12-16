@@ -19,8 +19,6 @@ set autoindent
 set timeout timeoutlen=1000 ttimeoutlen=100
 set autoread
 set incsearch
-set ignorecase
-set smartcase
 let mapleader=","
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
