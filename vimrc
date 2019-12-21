@@ -46,7 +46,8 @@ endfunction
 
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
-nnoremap <leader>t :call SelectaCommand("find * -type f", "", ":e")<cr>
+" If a .find-filter file is present in the current directory, search the directories enumerated in it.
+nnoremap <leader>t :call SelectaCommand("find \"$(xargs -a .find-filter \|\| echo \".\")\" -type f -regex \"\./[^\.].*\"", "", ":e")<cr>
 
 " Find all files containing the identifier provided to input().
 " ripgrep will skip gitignored files and directories.
