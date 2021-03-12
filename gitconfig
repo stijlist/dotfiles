@@ -40,3 +40,5 @@
 	indentHeuristic = true
 [stash]
   stash = stash -k -u
+[init]
+	defaultBranch = main
