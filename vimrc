@@ -28,6 +28,7 @@ nnoremap <leader>f gqip
 nnoremap <leader>r q:?^!<CR><CR>
 
 vnoremap s :s/\%V.*\%V.\?/\=system('surround "' . escape(input("with:"), '"`') . '"', submatch(0))/<cr>
+vnoremap <leader>e :!tee .repl-pipe<CR>
 
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
