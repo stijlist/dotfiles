@@ -3,7 +3,6 @@ set -g -x PATH /usr/local/bin $PATH
 set -g -x PATH ~/.cargo/bin $PATH
 set -g -x EDITOR vim
 set -g -x NOTESDIR ~/notes
-set -g -x GOPATH $HOME/go
 
 # git clone https://github.com/oh-my-fish/plugin-foreign-env.git
 set fish_function_path $fish_function_path ~/plugin-foreign-env/functions
