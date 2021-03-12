@@ -1,8 +1,6 @@
 set -g -x PATH ~/bin $PATH
 set -g -x PATH /usr/local/bin $PATH
-set -g -x PATH ~/fuchsia/.jiri_root/bin $PATH
 set -g -x PATH ~/.cargo/bin $PATH
-set -g -x PATH ~/fuchsia/out/build-zircon/tools $PATH
 set -g -x EDITOR vim
 set -g -x NOTESDIR ~/notes
 set -g -x GOPATH $HOME/go
@@ -38,15 +36,9 @@ function job_count
   end
 end
 
-function fx_build_dir
-  if test -e ./.fx-build-dir
-    cat ./.fx-build-dir | tr -d '\n'
-  end
-end
-
 function fish_prompt
   if test -d .git
-    printf '%s%s%s:%s:%s%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (fx_build_dir) (parse_git_branch) (job_count)
+    printf '%s%s%s:%s:%s%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (parse_git_branch) (job_count)
   else
     printf '%s%s%s%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (job_count)
   end
