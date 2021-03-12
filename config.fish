@@ -7,6 +7,9 @@ set -g -x EDITOR vim
 set -g -x NOTESDIR ~/notes
 set -g -x GOPATH $HOME/go
 
+# git clone https://github.com/oh-my-fish/plugin-foreign-env.git
+set fish_function_path $fish_function_path ~/plugin-foreign-env/functions
+fenv source ~/.nix-profile/etc/profile.d/nix.sh
 
 function fish_greeting
   echo "Here's what's at the top of your TODO list:"
