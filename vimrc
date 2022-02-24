@@ -27,9 +27,13 @@ nnoremap <leader>s :sp<CR>
 nnoremap <leader>v :vsp<CR>
 nnoremap <leader>f gqip
 nnoremap <leader>r q:?^!<CR><CR>
+nnoremap <leader>g :grep <cword><CR>
 
 vnoremap s :s/\%V.*\%V.\?/\=system('surround "' . escape(input("with:"), '"`') . '"', submatch(0))/<cr>
 vnoremap <leader>e :!tee .repl-pipe<CR>
+
+set grepprg=git\ --no-pager\ grep\ --no-color\ -n\ $*
+set grepformat=%f:%l:%m,%m\ %f\ match%ts,%f
 
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
