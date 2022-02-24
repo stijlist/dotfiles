@@ -65,7 +65,10 @@ set runtimepath+=~/.vim/LanguageClient-neovim
 set runtimepath+=~/.vim/vim-gh-line
 " Experimental language server protocol support.
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['ra_lsp_server'],
+    \ 'rust': ['rust-analyzer'],
+    \ 'go':   ['gopls'],
+    \ 'zig':  ['~/zls/zig-out/bin/zls'],
+    \ 'python': ['jedi-language-server']
     \ }
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
