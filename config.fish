@@ -1,12 +1,9 @@
-set -g -x PATH ~/bin $PATH
-set -g -x PATH /usr/local/bin $PATH
-set -g -x PATH ~/.cargo/bin $PATH
-set -g -x EDITOR vim
-set -g -x NOTESDIR ~/notes
-
 # git clone https://github.com/oh-my-fish/plugin-foreign-env.git
 set fish_function_path $fish_function_path ~/plugin-foreign-env/functions
-fenv source ~/.nix-profile/etc/profile.d/nix.sh
+fenv source ~/.profile
+
+set -g -x EDITOR vim
+set -g -x NOTESDIR ~/notes
 
 function fish_greeting
   echo "Here's what's at the top of your TODO list:"
