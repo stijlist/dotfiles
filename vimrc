@@ -62,6 +62,8 @@ autocmd QuickFixCmdPost    l* nested lwindow
 " 'filetype' has not already been set
 au BufRead,BufNewFile *.zig setfiletype zig
 
+set runtimepath+=~/.vim/vim-sexp
+set runtimepath+=~/.vim/vim-sexp-mappings-for-regular-people
 set runtimepath+=~/.vim/LanguageClient-neovim
 " blob view: <leader>gh
 " blame view: <leader>gb
