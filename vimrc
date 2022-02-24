@@ -58,6 +58,10 @@ nnoremap <leader>t :call SelectaCommand("find $(files-to-find) -type f", "", ":e
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
+" Set the filetype based on the file's extension, but only if
+" 'filetype' has not already been set
+au BufRead,BufNewFile *.zig setfiletype zig
+
 set runtimepath+=~/.vim/LanguageClient-neovim
 " blob view: <leader>gh
 " blame view: <leader>gb
