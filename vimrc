@@ -59,6 +59,10 @@ autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
 set runtimepath+=~/.vim/LanguageClient-neovim
+" blob view: <leader>gh
+" blame view: <leader>gb
+" repo view: <leader>go
+set runtimepath+=~/.vim/vim-gh-line
 " Experimental language server protocol support.
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['ra_lsp_server'],
