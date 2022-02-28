@@ -1,7 +1,22 @@
 # git clone https://github.com/oh-my-fish/plugin-foreign-env.git
 set fish_function_path $fish_function_path ~/plugin-foreign-env/functions
 fenv source ~/.profile
+# fenv source ~/.nix-profile/etc/profile.d/nix.sh
 
+alias g="git status"
+alias gc="git commit"
+alias gap="git add -p"
+alias gcp="git checkout -p"
+alias gca="git commit --amend"
+alias gdp="git diff -p"
+alias gdc="git diff --cached"
+alias grp="git reset -p"
+alias gs="git stash"
+alias gsp="git stash pop"
+alias gss="git stash show"
+alias gd="git diff"
+alias gl="git lg"
+alias gll="git log"
 set -g -x EDITOR vim
 set -g -x NOTESDIR ~/notes
 
