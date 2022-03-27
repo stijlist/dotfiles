@@ -43,3 +43,12 @@
   stash = stash -k -u
 [init]
 	defaultBranch = main
+[diff]
+        tool = difftastic
+[difftool]
+        prompt = false
+[difftool "difftastic"]
+        cmd = difft "$LOCAL" "$REMOTE"
+# Use a pager for large output, just like other git commands.
+[pager]
+        difftool = true

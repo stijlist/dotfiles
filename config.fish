@@ -14,7 +14,7 @@ alias grp="git reset -p"
 alias gs="git stash"
 alias gsp="git stash pop"
 alias gss="git stash show"
-alias gd="git diff"
+alias gd="git difftool"
 alias gl="git lg"
 alias gll="git log"
 set -g -x EDITOR vim
