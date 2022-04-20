@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>net.somethingdoneright.buskill</string>
+    <key>ProgramArguments</key>
+    <array>
+    	<string>/usr/bin/pmset</string>
+    	<string>displaysleepnow</string>
+    </array>
+    <key>LaunchEvents</key>
+    <dict>
+            <key>com.apple.iokit.matching</key>
+            <dict>
+                    <key>com.apple.device-detach</key>
+                    <dict>
+                            <key>idProduct</key>
+                            <integer>0xa2ca (SoloKeys v1)</integer>
+                            <key>idVendor</key>
+                            <integer>0x0483 (SoloKeys v1 https://github.com/solokeys/solo1/commit/9399a5f19548b3427d1af2fbd3cce4f693e377c0)</integer>
+                            <key>IOProviderClass</key>
+                            <string>AppleUSBDevice</string>
+                            <key>IOMatchLaunchStream</key>
+                            <true/>
+                    </dict>
+            </dict>
+    </dict>
+</dict>
+</plist>
