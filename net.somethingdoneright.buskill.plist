@@ -8,5 +8,7 @@
     <string>/Users/bert/buskill/buskill</string>
     <key>RunAtLoad</key>
     <true/>
+    <key>KeepAlive</key>
+    <true/>
 </dict>
 </plist>
