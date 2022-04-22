@@ -8,44 +8,12 @@ hs.window.animationDuration = 0
 
 hs.hotkey.bind({"cmd", "alt"}, "Left", function()
   local win = hs.window.focusedWindow()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  -- if a window is in the other stack, remove it.
-  local other = stacks["right"]
-  if contains(other, win) then
-    table.remove(other, find(win, other))
-    renderStacks()
-  end
-
-  local f = win:frame()
-
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w / 2
-  f.h = max.h
-  win:setFrame(f)
+  send("left", win)
 end)
 
 hs.hotkey.bind({"cmd", "alt"}, "Right", function()
   local win = hs.window.focusedWindow()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  -- if a window is in the other stack, remove it.
-  local other = stacks["left"]
-  if contains(other, win) then
-    table.remove(other, find(win, other))
-    renderStacks()
-  end
-
-  local f = win:frame()
-
-  f.x = max.x + (max.w / 2)
-  f.y = max.y
-  f.w = max.w / 2
-  f.h = max.h
-  win:setFrame(f)
+  send("right", win)
 end)
 
 -- "left"|"right" -> index -> win
@@ -58,10 +26,7 @@ function renderStacks()
 end
 
 function sendToStack(name, win)
-  -- identify stack and other
-  local stacks = shallowcopy(stacks)
-  local stack = remove(stacks, name)
-  local other = stacks[next(stacks)]
+  stack, other = selectStack(name)
 
   -- if a window is in the other stack, remove it.
   if contains(other, win) then
@@ -77,6 +42,31 @@ function sendToStack(name, win)
   renderStacks()
 end
 
+function send(name, win)
+  local screen = win:screen()
+  local max = screen:frame()
+
+  -- if a window is in the other stack, remove it.
+  _, other = selectStack(name)
+  if contains(other, win) then
+    table.remove(other, find(win, other))
+    renderStacks()
+  end
+
+  local f = win:frame()
+
+  local leftPad = 0
+  if name == "right" then
+    leftPad = (max.w / 2)
+  end
+
+  f.x = max.x + leftPad
+  f.y = max.y
+  f.w = max.w / 2
+  f.h = max.h
+  win:setFrame(f)
+end
+
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", function()
   local win = hs.window.focusedWindow()
   sendToStack("left", win)
@@ -87,14 +77,14 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Right", function()
   sendToStack("right", win)
 end)
 
-function renderStack(stack, side)
+function renderStack(stack, name)
   local count = #stack
   for i, win in pairs(stack) do
     local f = win:frame()
     local screen = win:screen()
     local max = screen:frame()
     local leftPad = 0
-    if side == "right" then
+    if name == "right" then
       leftPad = (max.w / 2)
     end
     local h = max.h / count
@@ -104,6 +94,14 @@ function renderStack(stack, side)
     f.h = h
     win:setFrame(f)
   end
+end
+
+-- returns stack, other
+function selectStack(name)
+  local stacks = shallowcopy(stacks)
+  local stack = remove(stacks, name)
+  local other = stacks[next(stacks)]
+  return stack, other
 end
 
 function contains(stack, win)
