@@ -1,4 +1,3 @@
-# . /Users/bert/.nix-profile/etc/profile.d/nix.sh
 PATH=~/.cargo/bin:~/go/bin:/opt/local/bin:/opt/local/sbin:$PATH
 PATH=$LLVM/bin:$PATH
 PATH=~/bin:$PATH
