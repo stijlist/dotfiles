@@ -1,9 +1,5 @@
 local laptopScreen = "Built-in Retina Display"
 
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
-  hs.alert.show( #stacks["left"]) -- , #stacks["right"])
-end)
-
 hs.window.animationDuration = 0
 
 hs.hotkey.bind({"cmd", "alt"}, "Left", function()
