@@ -17,6 +17,16 @@ hs.hotkey.bind({"cmd", "alt"}, "Right", function()
   send("right", win)
 end)
 
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", function()
+  local win = hs.window.focusedWindow()
+  sendToStack("left", win)
+end)
+
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Right", function()
+  local win = hs.window.focusedWindow()
+  sendToStack("right", win)
+end)
+
 -- "left"|"right" -> index -> win
 stacks = {left={}, right={}}
 
@@ -24,23 +34,6 @@ function renderStacks()
   for name, s in pairs(stacks) do
     renderStack(s, name)
   end
-end
-
-function sendToStack(name, win)
-  stack, other = selectStack(name)
-
-  -- if a window is in the other stack, remove it.
-  if contains(other, win) then
-    table.remove(other, find(win, other))
-  end
-  -- if the window is already in this stack, cycle it.
-  if contains(stack, win) then
-    shift(stack)
-  else
-    -- otherwise, add it to the stack.
-    table.insert(stack, win)
-  end
-  renderStacks()
 end
 
 function send(name, win)
@@ -68,15 +61,22 @@ function send(name, win)
   win:setFrame(f)
 end
 
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", function()
-  local win = hs.window.focusedWindow()
-  sendToStack("left", win)
-end)
+function sendToStack(name, win)
+  stack, other = selectStack(name)
 
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Right", function()
-  local win = hs.window.focusedWindow()
-  sendToStack("right", win)
-end)
+  -- if a window is in the other stack, remove it.
+  if contains(other, win) then
+    table.remove(other, find(win, other))
+  end
+  -- if the window is already in this stack, cycle it.
+  if contains(stack, win) then
+    shift(stack)
+  else
+    -- otherwise, add it to the stack.
+    table.insert(stack, win)
+  end
+  renderStacks()
+end
 
 function renderStack(stack, name)
   local count = #stack
