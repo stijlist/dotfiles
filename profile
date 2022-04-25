@@ -7,6 +7,7 @@ export SDKROOT=$(xcrun --show-sdk-path)
 export PATH="/opt/homebrew/opt/python@3.9/libexec/bin:$PATH"
 export PATH=$PATH:~/zig
 export PATH=$PATH:~/zls
+export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 alias gap="git add -p"
 alias gcp="git checkout -p"
 alias gdp="git diff -p"
