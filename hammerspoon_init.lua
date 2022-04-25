@@ -2,6 +2,11 @@ local laptopScreen = "Built-in Retina Display"
 
 hs.window.animationDuration = 0
 
+hs.hotkey.bind({"cmd", "alt"}, "F", function()
+  local win = hs.window.focusedWindow()
+  win:setFrame(win:screen():frame())
+end)
+
 hs.hotkey.bind({"cmd", "alt"}, "Left", function()
   local win = hs.window.focusedWindow()
   send("left", win)
