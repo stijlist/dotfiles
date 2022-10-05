@@ -1,5 +1,6 @@
 set nocompatible
 filetype plugin indent on
+colorscheme solarized
 set hidden
 set expandtab
 set tabstop=2
