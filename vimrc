@@ -28,7 +28,8 @@ nnoremap <leader>s :sp<CR>
 nnoremap <leader>v :vsp<CR>
 nnoremap <leader>f gqip
 nnoremap <leader>r q:?^!<CR><CR>
-nnoremap <leader>g :grep <cword><CR>
+nnoremap <leader>g :grep '\b<cword>\b'<CR>
+nnoremap <leader>ev :e $MYVIMRC<CR>
 
 vnoremap s :s/\%V.*\%V.\?/\=system('surround "' . escape(input("with:"), '"`') . '"', submatch(0))/<cr>
 vnoremap <leader>e :!tee .repl-pipe<CR>
