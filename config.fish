@@ -17,6 +17,7 @@ alias gss="git stash show"
 alias gd="git difftool"
 alias gl="git lg"
 alias gll="git log"
+alias gri="git revise -i"
 set -g -x EDITOR vim
 set -g -x NOTESDIR ~/notes
 
