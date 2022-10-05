@@ -41,7 +41,7 @@ function parse_git_branch
 end
 
 function job_count
-  set -l count (jobs | wc -l)
+  set -l count (jobs | wc -l | string trim)
   if not test $count -eq 0
     echo " ($count)"
   end
