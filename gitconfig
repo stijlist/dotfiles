@@ -48,7 +48,7 @@
 [difftool]
         prompt = false
 [difftool "difftastic"]
-        cmd = difft "$LOCAL" "$REMOTE"
+        cmd = difft --background=light "$LOCAL" "$REMOTE"
 # Use a pager for large output, just like other git commands.
 [pager]
         difftool = true
