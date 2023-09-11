@@ -49,7 +49,8 @@ function job_count
 end
 
 function fish_prompt
-  if test -d .git
+  set -g R (git rev-parse --show-toplevel)
+  if test -n "$R"
     printf '%s%s%s:%s:%s%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (parse_git_branch) (job_count)
   else
     printf '%s%s%s%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (job_count)
