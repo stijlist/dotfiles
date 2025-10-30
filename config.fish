@@ -1,5 +1,5 @@
 # git clone https://github.com/oh-my-fish/plugin-foreign-env.git
-set fish_function_path $fish_function_path ~/plugin-foreign-env/functions
+set fish_function_path $fish_function_path ~/.config/fish/plugin-foreign-env/functions
 fenv source ~/.profile
 # fenv source ~/.nix-profile/etc/profile.d/nix.sh
 
