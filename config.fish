@@ -25,7 +25,6 @@ function fish_greeting
   echo "Here's what's at the top of your TODO list:"
   head -n 3 $NOTESDIR/next.txt
 end
-funcsave fish_greeting
 
 set fish_git_dirty_color red
 set fish_git_not_dirty_color green
