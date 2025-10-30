@@ -20,7 +20,6 @@
     c  = rev-list --format=%B --max-count=1 HEAD
     aa = add -A
     s  = status -s
-    sl = status
     ss = "!git add -A -N && git commit -m snapshot"
     ap = "!git add -p && git commit"
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -37,7 +36,7 @@
 [http]
 	cookiefile = /usr/local/google/home/stijlist/.gitcookies
 [diff]
-	algorithm = patience
+	algorithm = histogram
 	indentHeuristic = true
 [stash]
   stash = stash -k -u
@@ -52,3 +51,7 @@
 # Use a pager for large output, just like other git commands.
 [pager]
         difftool = true
+[merge]
+	conflictStyle = zdiff3
+[url "ssh://git@github.com/"]
+	insteadOf = "https://github.com/"

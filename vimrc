@@ -7,7 +7,6 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set shell=/bin/bash
-set t_ti= t_te=
 set scrolloff=3
 set nobackup
 set nowritebackup
@@ -17,16 +16,23 @@ set showcmd
 set wildmode=longest,list
 set wildmenu
 set autoindent
+set cursorline
+set cursorcolumn
 set timeout timeoutlen=1000 ttimeoutlen=100
 set autoread
 set incsearch
 set clipboard=unnamed
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+set t_TI=^[[4?h
+set t_TE=^[[4?l
 let mapleader=","
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>s :sp<CR>
 nnoremap <leader>v :vsp<CR>
-nnoremap <leader>f gqip
+" format inside comment
+nnoremap <leader>f gqic
 nnoremap <leader>r q:?^!<CR><CR>
 nnoremap <leader>g :grep '\b<cword>\b'<CR>
 nnoremap <leader>ev :e $MYVIMRC<CR>
@@ -67,6 +73,8 @@ au BufRead,BufNewFile *.zig setfiletype zig
 set runtimepath+=~/.vim/vim-sexp
 set runtimepath+=~/.vim/vim-sexp-mappings-for-regular-people
 set runtimepath+=~/.vim/vim-lsp
+set runtimepath+=~/.vim/vim-textobj-user
+set runtimepath+=~/.vim/vim-textobj-comment
 " blob view: <leader>gh
 " blame view: <leader>gb
 " repo view: <leader>go
@@ -78,10 +86,24 @@ if executable('rust-analyzer')
         \ 'whitelist': ['rust'],
         \ })
 endif
+if executable('clangd')
+    augroup lsp_clangd
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'clangd',
+                    \ 'cmd': {server_info->['clangd']},
+                    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+                    \ })
+        autocmd FileType c setlocal omnifunc=lsp#complete
+        autocmd FileType cpp setlocal omnifunc=lsp#complete
+        autocmd FileType objc setlocal omnifunc=lsp#complete
+        autocmd FileType objcpp setlocal omnifunc=lsp#complete
+    augroup end
+endif
 
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_float_cursor = 1
 function! s:on_lsp_buffer_enabled() abort
-    let g:lsp_diagnostics_echo_cursor = 1
-    let g:lsp_diagnostics_float_cursor = 1
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
@@ -95,6 +117,9 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     nmap <buffer> K <plug>(lsp-hover)
+
+    let g:lsp_document_highlight_delay=100
+    highlight lspReference ctermfg=darkmagenta
 
     let g:lsp_format_sync_timeout = 1000
     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
