@@ -1,6 +1,6 @@
 PATH=~/.cargo/bin:~/go/bin:/opt/local/bin:/opt/local/sbin:$PATH
 PATH=$LLVM/bin:$PATH
-PATH=~/bin:$PATH
+PATH=~/code/bin:$PATH
 export PATH=$PATH:/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/bin
 export SDKROOT=$(xcrun --show-sdk-path)
 # source /opt/local/share/chruby/chruby.sh
